@@ -1,0 +1,6 @@
+{
+  "name": "AIS EventPilot",
+  "description": "An AI-powered event planning assistant for the UAJK Artificial Intelligence Society to automatically generate schedules, logistics, social media announcements, volunteer tasks, budgets, and post-event summaries.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
