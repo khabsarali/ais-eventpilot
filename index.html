@@ -4,10 +4,463 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>AIS EventPilot — UAJK Artificial Intelligence Society</title>
+    <!-- Tailwind CSS v4 CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css" />
   </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
+  <body class="bg-[#050506] text-[#F5F5F7] min-h-screen">
+    
+    <!-- Decorative background ambient lights -->
+    <div class="fixed top-0 left-1/4 w-[500px] h-[500px] bg-red-600/[0.03] rounded-full blur-[120px] pointer-events-none"></div>
+    <div class="fixed bottom-0 right-1/4 w-[600px] h-[600px] bg-indigo-600/[0.02] rounded-full blur-[140px] pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 relative">
+      
+      <!-- HEADER ZONE -->
+      <header class="flex flex-col md:flex-row items-start md:items-center justify-between mb-12 pb-6 border-b border-white/[0.05] gap-4">
+        <div class="space-y-1">
+          <div class="flex items-center gap-2">
+            <span class="w-2.5 h-2.5 rounded-full bg-[#FF453A] animate-pulse"></span>
+            <span class="font-mono text-[10px] text-[#6E6E73] uppercase tracking-widest font-bold">UAJK AIS CHAPTER COORDINATOR</span>
+          </div>
+          <h1 class="text-2xl md:text-3xl font-bold tracking-tight font-display text-white flex items-center gap-3">
+            AIS EventPilot <span class="text-xs bg-[#FF453A]/10 text-[#FF453A] px-2.5 py-1 rounded-full border border-[#FF453A]/20 font-mono">v1.1</span>
+          </h1>
+          <p class="text-xs text-[#6E6E73]">
+            State-of-the-art campaign and planning automation curated for Azad Jammu & Kashmir's ultimate tech society.
+          </p>
+        </div>
+        
+        <div class="flex items-center gap-3 bg-neutral-900/80 border border-white/5 px-4 py-2 rounded-xl text-xs">
+          <svg class="w-4 h-4 text-[#FF453A]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+          </svg>
+          <div class="text-left font-mono">
+            <span class="text-[9px] block text-[#6E6E73] uppercase tracking-widest">HQ Location</span>
+            <span class="text-white font-medium">Muzaffarabad, AJK</span>
+          </div>
+        </div>
+      </header>
+
+      <!-- CONFIG & CONTROLLER ROW -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-12 items-start">
+        
+        <!-- LEFT: Presets & Inputs Form -->
+        <div class="lg:col-span-5 space-y-6">
+          
+          <!-- Presets Card -->
+          <div class="glass-panel p-5 space-y-4">
+            <div class="flex items-center gap-2 text-white">
+              <svg class="w-4 h-4 text-[#FF453A]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
+              </svg>
+              <h2 class="text-xs font-bold uppercase tracking-wider font-mono">Select Blueprint Presets</h2>
+            </div>
+            <p class="text-[11px] text-[#6E6E73]">
+              Tap a preset to instantly populate standard event configurations:
+            </p>
+            <div id="preset-container" class="space-y-2">
+              <!-- Load dynamic preset components -->
+            </div>
+          </div>
+
+          <!-- Formulation Inputs Form -->
+          <div class="glass-panel p-5 relative overflow-hidden">
+            <div class="absolute top-0 right-0 w-20 h-20 bg-red-600/[0.01] rounded-full blur-xl pointer-events-none"></div>
+            
+            <div class="flex items-center justify-between mb-5">
+              <div>
+                <h2 class="text-xs font-bold text-white uppercase tracking-wider font-mono">Event Blueprint inputs</h2>
+                <p class="text-[10px] text-[#6E6E73]">Configure targeted event metrics.</p>
+              </div>
+              <svg class="w-4 h-4 text-[#FF453A]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
+              </svg>
+            </div>
+
+            <form id="blueprint-form" class="space-y-4">
+              <div>
+                <label class="text-[9px] uppercase tracking-widest text-[#6E6E73] block font-bold mb-1.5 font-mono">Official Event Name</label>
+                <input id="input-eventName" required type="text" placeholder="e.g., AI Summit Azad Kashmir" class="w-full bg-neutral-900/60 text-xs px-4 py-3 rounded-xl border border-white/[0.08] focus:outline-none focus:border-[#FF453A]/40 transition-all text-white font-medium" />
+              </div>
+
+              <div class="grid grid-cols-2 gap-3">
+                <div>
+                  <label class="text-[9px] uppercase tracking-widest text-[#6E6E73] block font-bold mb-1.5 font-mono">Event Date</label>
+                  <input id="input-eventDate" required type="date" class="w-full bg-neutral-900/60 text-xs px-3 py-3 rounded-xl border border-white/[0.08] focus:outline-none focus:border-[#FF453A]/30 transition-all text-white font-semibold" />
+                </div>
+                <div>
+                  <label class="text-[9px] uppercase tracking-widest text-[#6E6E73] block font-bold mb-1.5 font-mono">Selected Venue</label>
+                  <input id="input-venue" required type="text" placeholder="e.g., Seminar Hall, UAJK" class="w-full bg-neutral-900/60 text-xs px-3 py-3 rounded-xl border border-white/[0.08] focus:outline-none focus:border-[#FF453A]/30 transition-all text-white font-medium" />
+                </div>
+              </div>
+
+              <div>
+                <label class="text-[9px] uppercase tracking-widest text-[#6E6E73] block font-bold mb-1.5 font-mono">Campus Target Audience</label>
+                <input id="input-audience" required type="text" placeholder="e.g., CS, SE & IT Undergrad Students" class="w-full bg-neutral-900/60 text-xs px-4 py-3 rounded-xl border border-white/[0.08] focus:outline-none focus:border-[#FF453A]/30 transition-all text-white font-medium" />
+              </div>
+
+              <div>
+                <label class="text-[9px] uppercase tracking-widest text-[#6E6E73] block font-bold mb-1.5 font-mono">Core Theme / Focus Description</label>
+                <textarea id="input-theme" required rows="3" placeholder="e.g., Practical LLM engineering workflows and setting up custom chatbot APIs on campus..." class="w-full bg-neutral-900/60 text-xs px-4 py-3 rounded-xl border border-white/[0.08] focus:outline-none focus:border-[#FF453A]/30 transition-all text-white resize-none font-medium"></textarea>
+              </div>
+
+              <button type="submit" class="w-full btn-premium-red py-3.5 px-6 font-mono text-xs tracking-wider text-white font-bold flex items-center justify-center gap-2 cursor-pointer mt-2">
+                <span>RECRUIT CAMPAIGN ENGINE</span>
+                <svg class="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                </svg>
+              </button>
+            </form>
+          </div>
+          
+          <div class="p-4 bg-white/[0.01] border border-white/[0.05] rounded-xl flex items-start gap-3">
+            <svg class="w-4 h-4 text-[#6E6E73] shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            <p class="text-[11px] text-[#6E6E73] leading-relaxed">
+              AIS EventPilot leverages modern Generative Models to automatically engineer timelines, PKR budgets, volunteer structures, and full text marketing catalogs instantly.
+            </p>
+          </div>
+
+        </div>
+
+        <!-- RIGHT: Live Loading Sequence OR Workspace Sandbox -->
+        <div class="lg:col-span-7">
+          
+          <!-- API Error Alert -->
+          <div id="error-card" class="mb-6 p-4 bg-neutral-900 border border-[#FF453A]/20 rounded-xl text-[#FF453A] text-xs flex gap-3 items-center hidden animate-fade-in">
+            <span class="font-bold uppercase bg-[#FF453A]/10 px-2 py-0.5 rounded-md text-[9px] border border-[#FF453A]/20">ERROR</span>
+            <p id="error-message" class="font-semibold"></p>
+          </div>
+
+          <!-- Loading Panel -->
+          <div id="loading-panel" class="glass-panel p-8 text-center relative overflow-hidden flex flex-col items-center justify-center min-h-[440px] hidden">
+            <div class="w-16 h-16 relative flex items-center justify-center mb-8">
+              <div class="absolute inset-0 border-2 border-white/5 rounded-full"></div>
+              <div class="absolute inset-0 border-2 border-t-[#FF453A] border-r-transparent border-b-transparent border-l-transparent rounded-full animate-spin"></div>
+              <svg class="w-6 h-6 text-[#FF453A] animate-pulse" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z" />
+              </svg>
+            </div>
+            
+            <h3 id="loader-title" class="text-sm font-bold tracking-widest font-mono uppercase text-white mb-2">Composing Blueprint Progressing...</h3>
+            
+            <!-- Progress Bar -->
+            <div class="w-full max-w-sm bg-white/[0.05] h-1 rounded-full overflow-hidden mb-6 border border-white/[0.03]">
+              <div id="loader-progress" class="bg-[#FF453A] h-full transition-all duration-300" style="width: 15%"></div>
+            </div>
+
+            <!-- Simulated local server shell logging -->
+            <div class="font-mono text-[10px] text-[#6E6E73] text-left w-full space-y-2 bg-black/60 p-4 rounded-xl border border-white/[0.06] max-h-[160px] overflow-y-auto">
+              <div class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-white/40 rounded-full"></span><span id="log-line-1">Executing Client Verification Sequence...</span></div>
+              <div class="flex items-center gap-2 text-white/50"><span class="w-1.5 h-1.5 bg-[#FF453A] rounded-full animate-ping"></span><span id="log-line-current">Injecting user params, invoking model...</span></div>
+              <div class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-white/20 rounded-full"></span><span id="log-line-3" class="opacity-50">Pending response coordinates...</span></div>
+            </div>
+          </div>
+
+          <!-- PRIMARY INTERACTIVE WORKSPACE -->
+          <div id="workspace-panel" class="space-y-6 animate-fade-in">
+            
+            <!-- Cover Capsule Card -->
+            <div class="glass-panel p-6 relative overflow-hidden">
+              <div class="absolute top-0 right-0 w-48 h-48 bg-white/[0.01] rounded-full blur-[60px] pointer-events-none"></div>
+              <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+                <div class="space-y-1">
+                  <span id="badge-venue" class="font-mono text-[9px] uppercase bg-white/[0.05] border border-white/[0.08] text-white/70 px-2 py-0.5 rounded-full">King Abdullah Campus, UAJK</span>
+                  <h2 id="workspace-eventName" class="text-lg md:text-xl font-bold font-display text-white mt-1">Generative AI Hackfest</h2>
+                  <p id="workspace-themeSummary" class="text-xs text-[#6E6E73] line-clamp-2">Practical LLMs, Prompt Engineering, and Agentic workflows with regional industry leaders</p>
+                </div>
+                <div class="bg-black/40 border border-white/[0.06] p-3 rounded-xl min-w-[130px] text-center shrink-0">
+                  <span class="text-[9px] block text-[#6E6E73] font-mono uppercase tracking-wider">Scheduled Target</span>
+                  <span id="workspace-eventDate" class="text-xs text-white font-bold font-mono">June 12, 2026</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Tab pills navigation controller for Sandbox -->
+            <div class="flex flex-wrap bg-neutral-900/90 border border-white/[0.06] p-1 rounded-xl gap-1">
+              <button onclick="switchTab('tab-summary')" id="btn-tab-summary" class="tab-btn px-3 py-2 text-[10px] sm:text-xs font-mono font-bold rounded-lg transition-all text-white bg-white/10 shrink-0">Executive Context</button>
+              <button onclick="switchTab('tab-schedule')" id="btn-tab-schedule" class="tab-btn px-3 py-2 text-[10px] sm:text-xs font-mono font-bold rounded-lg transition-all text-white/55 hover:text-white shrink-0">Schedule</button>
+              <button onclick="switchTab('tab-logistics')" id="btn-tab-logistics" class="tab-btn px-3 py-2 text-[10px] sm:text-xs font-mono font-bold rounded-lg transition-all text-white/55 hover:text-white shrink-0">Checklist</button>
+              <button onclick="switchTab('tab-social')" id="btn-tab-social" class="tab-btn px-3 py-2 text-[10px] sm:text-xs font-mono font-bold rounded-lg transition-all text-white/55 hover:text-white shrink-0">Campaign Copy</button>
+              <button onclick="switchTab('tab-volunteers')" id="btn-tab-volunteers" class="tab-btn px-3 py-2 text-[10px] sm:text-xs font-mono font-bold rounded-lg transition-all text-white/55 hover:text-white shrink-0">Squad Delegation</button>
+              <button onclick="switchTab('tab-budget')" id="btn-tab-budget" class="tab-btn px-3 py-2 text-[10px] sm:text-xs font-mono font-bold rounded-lg transition-all text-white/55 hover:text-white shrink-0">PKR Budget</button>
+              <button onclick="switchTab('tab-poster')" id="btn-tab-poster" class="tab-btn px-3 py-2 text-[10px] sm:text-xs font-mono font-bold rounded-lg transition-all text-white/55 hover:text-white shrink-0">Art Concept</button>
+              <button onclick="switchTab('tab-post')" id="btn-tab-post" class="tab-btn px-3 py-2 text-[10px] sm:text-xs font-mono font-bold rounded-lg transition-all text-white/55 hover:text-white shrink-0">Audit Summary</button>
+            </div>
+
+            <!-- Tab Canvas wrapper -->
+            <div id="tab-canvas" class="bg-[#0c0c0e] border border-white/[0.06] rounded-2xl p-5 min-h-[360px] relative">
+              <div class="absolute top-3 right-4 text-[8px] font-mono text-[#6E6E73] select-none uppercase tracking-widest">AJK SYSTEM COORDINATES ACTIVE</div>
+              
+              <!-- Tab 1: Executive Brief / Context Bento -->
+              <div id="tab-summary" class="tab-content space-y-6">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div class="p-4 bg-white/[0.01] border border-white/[0.04] rounded-xl flex flex-col justify-between">
+                    <div>
+                      <h3 class="text-[10px] font-bold text-white uppercase tracking-widest font-mono mb-2">Executive Summary</h3>
+                      <p id="sum-brief" class="text-xs text-[#a1a1a8] leading-relaxed">
+                        Establishing standard developer orientation and introductory practical agent coordinates to inspire high-performance tech outcomes at UAJK campus.
+                      </p>
+                    </div>
+                    <div class="mt-4 pt-4 border-t border-white/[0.04] flex items-center justify-between text-[11px] text-[#6E6E73]">
+                      <span>Coordination Authority:</span>
+                      <span class="text-white font-mono font-medium">UAJK AIS Chapter</span>
+                    </div>
+                  </div>
+                  
+                  <div class="p-4 bg-white/[0.01] border border-white/[0.04] rounded-xl flex flex-col justify-between">
+                    <div>
+                      <h3 class="text-[10px] font-bold text-white uppercase tracking-widest font-mono mb-2">Checklist Pipeline Status</h3>
+                      <div class="flex items-baseline gap-2 mt-2">
+                        <span id="sum-completionPct" class="text-3xl font-display font-medium text-white">0%</span>
+                        <span class="text-[10px] text-zinc-500 font-mono uppercase tracking-wider">Completed</span>
+                      </div>
+                      <div class="w-full bg-white/[0.05] h-1.5 rounded-full mt-3 overflow-hidden">
+                        <div id="sum-progressBar" class="h-full bg-emerald-500 transition-all duration-300" style="width: 0%"></div>
+                      </div>
+                    </div>
+                    <div class="mt-4 pt-4 border-t border-white/[0.04] text-[10px] text-zinc-500 flex justify-between">
+                      <span>Total Tasks Inbound:</span>
+                      <span id="sum-taskCounts" class="font-mono text-white">0 Items</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div class="p-4 bg-white/[0.01] border border-white/[0.04] rounded-xl space-y-2">
+                    <div class="w-7 h-7 bg-emerald-500/10 border border-emerald-500/20 rounded-lg flex items-center justify-center text-emerald-400">
+                      <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                      </svg>
+                    </div>
+                    <p class="text-[11px] text-[#a1a1a8] leading-relaxed">
+                      <strong>Automatic Budget Calibration:</strong> Financial requirements estimated programmatically with localized Azad Kashmir campus Samosa/Tea catering ratios.
+                    </p>
+                  </div>
+
+                  <div class="p-4 bg-white/[0.01] border border-white/[0.04] rounded-xl space-y-2">
+                    <div class="w-7 h-7 bg-blue-500/10 border border-blue-500/20 rounded-lg flex items-center justify-center text-blue-400">
+                      <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+                      </svg>
+                    </div>
+                    <p class="text-[11px] text-[#a1a1a8] leading-relaxed">
+                      <strong>Intelligent Copywriter Engine:</strong> Hand-crafted WhatsApp student broadcast, executive invitations, and hashtag stacks included.
+                    </p>
+                  </div>
+                </div>
+
+                <div class="border border-white/5 bg-white/[0.01] rounded-2xl p-5 text-center space-y-4">
+                  <div class="space-y-0.5">
+                    <span class="text-[9px] text-[#FF453A] font-mono uppercase tracking-widest font-bold">AIS Azad Kashmir Metrics</span>
+                    <h4 class="text-xs text-white uppercase font-bold tracking-wider font-mono">UAJK Chapter Key Performance Performance</h4>
+                  </div>
+                  <div class="grid grid-cols-3 gap-2">
+                    <div class="p-3 bg-[#050506]/80 rounded-xl border border-white/[0.03]">
+                      <span class="text-white text-base font-bold font-mono">92%</span>
+                      <p class="text-[9px] text-[#6E6E73] uppercase font-mono mt-1">Student Retention</p>
+                    </div>
+                    <div class="p-3 bg-[#050506]/80 rounded-xl border border-white/[0.03]">
+                      <span class="text-white text-base font-bold font-mono">2,100+</span>
+                      <p class="text-[9px] text-[#6E6E73] uppercase font-mono mt-1">CS Student Circle</p>
+                    </div>
+                    <div class="p-3 bg-[#050506]/80 rounded-xl border border-white/[0.03]">
+                      <span class="text-white text-base font-bold font-mono">PKR 0</span>
+                      <p class="text-[9px] text-[#6E6E73] uppercase font-mono mt-1">Society Access Cost</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Tab 2: Schedule Timeline -->
+              <div id="tab-schedule" class="tab-content space-y-5 hidden">
+                <div class="border-b border-white/[0.04] pb-3 flex justify-between items-center">
+                  <h3 class="text-xs font-bold text-white uppercase tracking-wider font-mono">Stage Hour Timeline</h3>
+                  <span class="text-[9px] text-zinc-500 font-mono uppercase">Full Sequential View</span>
+                </div>
+                <div id="schedule-timeline-container" class="space-y-4 relative before:absolute before:inset-y-1 before:left-3.5 before:w-[1px] before:bg-white/10">
+                  <!-- Dynamic hourly timeline rows go here -->
+                </div>
+              </div>
+
+              <!-- Tab 3: Logistics Checklist -->
+              <div id="tab-logistics" class="tab-content space-y-5 hidden">
+                <div class="border-b border-white/[0.04] pb-3 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
+                  <div>
+                    <h3 class="text-xs font-bold text-white uppercase tracking-wider font-mono">Stage & Operations checklist</h3>
+                    <p class="text-[10px] text-[#6E6E73] mt-0.5">Toggle task completions to save state locally.</p>
+                  </div>
+                  
+                  <!-- Filter Checklist by Category -->
+                  <div class="flex gap-1.5 flex-wrap">
+                    <button onclick="filterChecklist('All')" id="btn-filter-All" class="filter-btn text-[9px] px-2 py-1 rounded bg-[#FF453A] border border-[#FF453A]/20 text-white font-mono font-bold">ALL</button>
+                    <button onclick="filterChecklist('Admin')" id="btn-filter-Admin" class="filter-btn text-[9px] px-2 py-1 rounded bg-black/40 border border-white/5 text-[#6E6E73] font-mono hover:text-white">ADMIN</button>
+                    <button onclick="filterChecklist('Technical')" id="btn-filter-Technical" class="filter-btn text-[9px] px-2 py-1 rounded bg-black/40 border border-white/5 text-[#6E6E73] font-mono hover:text-white">TECH</button>
+                    <button onclick="filterChecklist('Staging')" id="btn-filter-Staging" class="filter-btn text-[9px] px-2 py-1 rounded bg-black/40 border border-white/5 text-[#6E6E73] font-mono hover:text-white">STAGE</button>
+                    <button onclick="filterChecklist('Catering')" id="btn-filter-Catering" class="filter-btn text-[9px] px-2 py-1 rounded bg-black/40 border border-white/5 text-[#6E6E73] font-mono hover:text-white">CATERING</button>
+                  </div>
+                </div>
+
+                <!-- Live Checklist Task Items -->
+                <div id="checklist-tasks-container" class="space-y-2 max-h-[300px] overflow-y-auto pr-1">
+                  <!-- Loaded dynamically by Javascript -->
+                </div>
+
+                <!-- Add customized localized custom task item -->
+                <form id="add-task-form" class="flex gap-2 pt-3 border-t border-white/[0.04]">
+                  <input id="new-task-item" type="text" placeholder="Add custom action item (e.g., DSLRs setup)..." class="flex-1 bg-black/60 border border-white/10 text-xs px-3 py-2 rounded-lg text-white" required />
+                  <select id="new-task-category" class="bg-black/60 border border-white/10 text-[10px] px-2 py-2 rounded-lg text-white font-mono font-bold">
+                    <option value="Admin">Admin</option>
+                    <option value="Technical">Tech</option>
+                    <option value="Staging">Staging</option>
+                    <option value="Catering">Catering</option>
+                    <option value="Creative">Creative</option>
+                  </select>
+                  <button type="submit" class="bg-[#FF453A] border border-[#FF453A]/20 hover:bg-red-600 px-4 rounded-lg text-white font-mono text-xs font-bold shrink-0">+</button>
+                </form>
+              </div>
+
+              <!-- Tab 4: Social Media Kit -->
+              <div id="tab-social" class="tab-content space-y-4 hidden">
+                <div class="flex gap-1.5 border-b border-white/[0.06] pb-2">
+                  <button onclick="switchSocialSubtab('whatsapp')" id="btn-soc-whatsapp" class="soc-subtab-btn text-[10px] font-mono font-bold px-3 py-1 rounded-md bg-white/10 text-white">WHATSAPP</button>
+                  <button onclick="switchSocialSubtab('instagram')" id="btn-soc-instagram" class="soc-subtab-btn text-[10px] font-mono font-bold px-3 py-1 rounded-md text-[#6E6E73] hover:text-white">INSTAGRAM</button>
+                  <button onclick="switchSocialSubtab('linkedin')" id="btn-soc-linkedin" class="soc-subtab-btn text-[10px] font-mono font-bold px-3 py-1 rounded-md text-[#6E6E73] hover:text-white">LINKEDIN</button>
+                </div>
+
+                <!-- WhatsApp sub-tab text-area -->
+                <div id="soc-whatsapp" class="soc-tab-content space-y-3">
+                  <p class="text-[10px] text-[#6E6E73]">Copier ready message formatted for instant WhatsApp student circles broadcast:</p>
+                  <pre id="social-whatsapp-text" class="bg-black/80 border border-white/5 p-4 rounded-xl text-xs font-sans text-rose-100 whitespace-pre-wrap max-h-[220px] overflow-y-auto leading-relaxed"></pre>
+                  <button onclick="copySocialText('social-whatsapp-text', 'copy-btn-wa')" id="copy-btn-wa" class="bg-neutral-900 hover:bg-neutral-800 border border-white/10 px-4 py-2 text-xs font-mono text-white font-bold rounded-lg transition-all flex items-center gap-2">
+                    <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"/></svg>
+                    <span>COPY BROADCAST</span>
+                  </button>
+                </div>
+
+                <!-- Instagram sub-tab text-area -->
+                <div id="soc-instagram" class="soc-tab-content space-y-3 hidden">
+                  <p class="text-[10px] text-[#6E6E73]">Cool and modern style hashtags caption optimized for campus social accounts:</p>
+                  <pre id="social-instagram-text" class="bg-black/80 border border-white/5 p-4 rounded-xl text-xs font-sans text-neutral-200 whitespace-pre-wrap max-h-[220px] overflow-y-auto leading-relaxed"></pre>
+                  <button onclick="copySocialText('social-instagram-text', 'copy-btn-insta')" id="copy-btn-insta" class="bg-neutral-900 hover:bg-neutral-800 border border-white/10 px-4 py-2 text-xs font-mono text-white font-bold rounded-lg transition-all flex items-center gap-2">
+                    <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"/></svg>
+                    <span>COPY CAPTION</span>
+                  </button>
+                </div>
+
+                <!-- LinkedIn sub-tab text-area -->
+                <div id="soc-linkedin" class="soc-tab-content space-y-3 hidden">
+                  <p class="text-[10px] text-[#6E6E73]">Sophisticated post ideal for academic faculty advisors and regional IT hubs:</p>
+                  <pre id="social-linkedin-text" class="bg-black/80 border border-white/5 p-4 rounded-xl text-xs font-sans text-neutral-200 whitespace-pre-wrap max-h-[220px] overflow-y-auto leading-relaxed"></pre>
+                  <button onclick="copySocialText('social-linkedin-text', 'copy-btn-li')" id="copy-btn-li" class="bg-neutral-900 hover:bg-neutral-800 border border-white/10 px-4 py-2 text-xs font-mono text-white font-bold rounded-lg transition-all flex items-center gap-2">
+                    <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"/></svg>
+                    <span>COPY ANNOUNCEMENT</span>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Tab 5: Volunteer Roles -->
+              <div id="tab-volunteers" class="tab-content space-y-5 hidden">
+                <div class="border-b border-white/[0.04] pb-3 flex justify-between items-center">
+                  <h3 class="text-xs font-bold text-white uppercase tracking-wider font-mono">Volunteer squad deployments</h3>
+                  <span class="text-[9px] text-[#FF453A] font-mono font-bold">AIS Org Chart</span>
+                </div>
+                <div id="volunteer-squads-container" class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <!-- Dynamic Squad categories injected here -->
+                </div>
+              </div>
+
+              <!-- Tab 6: PKR Budget Planner -->
+              <div id="tab-budget" class="tab-content space-y-5 hidden">
+                <div class="border-b border-white/[0.04] pb-3 flex justify-between items-center">
+                  <div>
+                    <h3 class="text-xs font-bold text-white uppercase tracking-wider font-mono">Pakistani Rupees (PKR) Financial Sheet</h3>
+                    <p class="text-[9px] text-[#6E6E73] mt-0.5">Budget estimates matching Azad Kashmir University staging scales.</p>
+                  </div>
+                  
+                  <!-- Total budget visual indicator -->
+                  <div class="bg-red-600/10 border border-red-600/30 text-[#FF453A] rounded-xl px-4 py-1.5 text-right font-mono">
+                    <span class="text-[8px] uppercase text-[#FF453A] block tracking-[0.08em]">Grand Aggregated Cost</span>
+                    <span id="budget-sum-element" class="text-xs font-bold">PKR 35,000</span>
+                  </div>
+                </div>
+                
+                <div id="budget-items-container" class="space-y-3">
+                  <!-- Injected via Javascript template -->
+                </div>
+              </div>
+
+              <!-- Tab 7: AI Poster Idea Generator -->
+              <div id="tab-poster" class="tab-content space-y-5 hidden">
+                <div class="border-b border-white/[0.04] pb-3 flex justify-between items-center">
+                  <h3 class="text-xs font-bold text-white uppercase tracking-wider font-mono">Graphics & Layout Concept</h3>
+                  <span class="text-[9px] text-zinc-500 font-mono">Poster Board Template</span>
+                </div>
+
+                <div class="space-y-4">
+                  <div class="p-4 bg-white/[0.01] border border-white/[0.04] rounded-xl">
+                    <span class="text-[9px] uppercase font-mono text-[#FF453A] font-bold block">Art Title Branding Slogan</span>
+                    <h4 id="poster-headline" class="text-base text-white font-bold font-display mt-1">"Decoding Intelligent Horizons"</h4>
+                    <p id="poster-slogan" class="text-xs text-[#6E6E73] italic mt-1 font-sans">"Empowering Jammu and Kashmir's next Gen AI circle."</p>
+                  </div>
+
+                  <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-left">
+                    <div class="p-4 bg-white/[0.01] border border-white/[0.04] rounded-xl space-y-2">
+                      <span class="text-[9px] uppercase font-mono text-[#6E6E73] block">Suggested Color palette</span>
+                      <div id="poster-colors" class="flex flex-col gap-1.5 pt-1">
+                        <!-- Loaded dynamically -->
+                      </div>
+                    </div>
+                    
+                    <div class="p-4 bg-white/[0.01] border border-white/[0.04] rounded-xl space-y-2">
+                      <span class="text-[9px] uppercase font-mono text-[#6E6E73] block">Artwork Typography Pairing</span>
+                      <p id="poster-typography" class="text-xs text-neutral-200 font-sans mt-1">Loading pairings...</p>
+                    </div>
+                  </div>
+
+                  <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-left">
+                    <div class="p-4 bg-white/[0.01] border border-white/[0.04] rounded-xl space-y-1.5">
+                      <span class="text-[9px] uppercase font-mono text-[#6E6E73] block">Visual backgrounds Theme decor</span>
+                      <p id="poster-theme" class="text-xs text-neutral-300 font-sans"></p>
+                    </div>
+                    <div class="p-4 bg-white/[0.01] border border-white/[0.04] rounded-xl space-y-1.5">
+                      <span class="text-[9px] uppercase font-mono text-[#6E6E73] block">Suggested Flyer Layout mapping</span>
+                      <p id="poster-layout" class="text-xs text-neutral-300 font-sans"></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Tab 8: Post-Event Survey Template -->
+              <div id="tab-post" class="tab-content space-y-5 hidden">
+                <div class="border-b border-white/[0.04] pb-3 flex justify-between items-center">
+                  <h3 class="text-xs font-bold text-white uppercase tracking-wider font-mono">Post-Event Audit & Survey Ledger</h3>
+                  <button onclick="copySocialText('markdown-content-survey', 'copy-btn-audit')" id="copy-btn-audit" class="bg-neutral-900 border border-white/5 text-[10px] font-mono px-3 py-1.5 rounded-lg flex items-center gap-1.5 text-white hover:border-white/10 transition-all">
+                    <svg class="w-3.5 h-3.5 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"/></svg>
+                    <span>COPY MARKDOWN TEMPLATE</span>
+                  </button>
+                </div>
+                
+                <p class="text-[10px] text-[#6E6E73]">Printable template designed to benchmark student response metrics:</p>
+                <div class="bg-black/70 border border-white/5 p-4 rounded-xl max-h-[300px] overflow-y-auto">
+                  <pre id="markdown-content-survey" class="text-xs font-sans text-stone-300 whitespace-pre-wrap leading-relaxed select-text"></pre>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- SCRIPT REFERENCE -->
+    <script src="script.js"></script>
   </body>
 </html>
-
