@@ -14,13 +14,242 @@
     <div class="fixed top-0 left-1/4 w-[500px] h-[500px] bg-red-600/[0.03] rounded-full blur-[120px] pointer-events-none"></div>
     <div class="fixed bottom-0 right-1/4 w-[600px] h-[600px] bg-indigo-600/[0.02] rounded-full blur-[140px] pointer-events-none"></div>
 
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 relative">
+    <!-- LANDING VIEW PANEL -->
+    <div id="landing-view" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 relative space-y-16 animate-fade-in">
+      
+      <!-- Top nav-bar of Landing -->
+      <header class="flex items-center justify-between pb-6 border-b border-white/[0.04] gap-4">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-xl bg-[#FF453A] flex items-center justify-center text-white shadow-[0_0_20px_rgba(255,69,58,0.2)]">
+            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 2L2 22h20L12 2zm0 3.99L18.8 19H5.2L12 5.99z" />
+            </svg>
+          </div>
+          <div>
+            <div class="flex items-center gap-1.5">
+              <span class="font-display font-extrabold text-white text-base tracking-tight">AIS EventPilot</span>
+              <span class="text-[9px] bg-red-500/10 text-red-100 px-2.5 py-0.5 rounded-full border border-red-500/20 font-mono font-bold">UAJK CHAPTER</span>
+            </div>
+            <p class="text-[10px] text-zinc-500 font-mono tracking-widest uppercase">Muzaffarabad Hub</p>
+          </div>
+        </div>
+        
+        <button onclick="enterPlanningEngineWithPreset(-1)" class="btn-premium-red py-2 px-5 font-mono text-[10px] tracking-wider text-white font-bold flex items-center gap-2 cursor-pointer">
+          <span>ENTER PLANNER</span>
+          <svg class="w-3 h-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 5l7 7-7 7M5 5l7 7-7 7" />
+          </svg>
+        </button>
+      </header>
+
+      <!-- HERO SECTION -->
+      <section class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center pt-8">
+        <div class="lg:col-span-7 space-y-6">
+          <div class="inline-flex items-center gap-2 px-3 py-1 bg-[#FF453A]/10 border border-[#FF453A]/25 rounded-full">
+            <span class="w-2 h-2 rounded-full bg-[#FF453A] animate-pulse"></span>
+            <span class="text-[10px] font-mono text-red-400 font-bold uppercase tracking-widest">Azad Jammu & Kashmir's Premier AI Circle</span>
+          </div>
+          
+          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight font-display text-white leading-tight">
+            Plan UAJK’s <span class="bg-gradient-to-r from-red-500 via-rose-400 to-indigo-400 bg-clip-text text-transparent">Next Tech Wave</span> in Seconds
+          </h1>
+          
+          <p class="text-xs sm:text-sm text-[#8E8E93] leading-relaxed max-w-xl">
+            AIS EventPilot represents the bleeding edge of local campaign formulation. Tailored specifically for the University of Azad Jammu & Kashmir context, we programmatically engineer hourly timelines, localized PKR budgets, volunteer squad grids, and marketing copy.
+          </p>
+          
+          <div class="flex flex-wrap gap-4 pt-4">
+            <button onclick="enterPlanningEngineWithPreset(0)" class="btn-premium-red py-3.5 px-8 font-mono text-xs tracking-wider text-white font-bold flex items-center justify-center gap-2.5 cursor-pointer">
+              <span>LAUNCH CAMPAIGN PLANNER</span>
+              <svg class="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+              </svg>
+            </button>
+            <a href="#featured-events" class="px-6 py-3.5 bg-white/[0.02] border border-white/5 hover:bg-white/[0.04] hover:border-white/10 transition-all rounded-xl font-mono text-xs text-white font-bold inline-flex items-center justify-center gap-2">
+              <span>EXPLORE CAMPUS BLUEPRINTS</span>
+              <svg class="w-3.5 h-3.5 text-zinc-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 13l-7 7-7-7m14-6l-7 7-7-7" />
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- HERO RIGHT: MOCK WORKSPACE PREVIEW -->
+        <div class="lg:col-span-5 relative">
+          <!-- Ambient Glow behind Mockup -->
+          <div class="absolute -inset-1 bg-gradient-to-r from-red-500 to-indigo-500 rounded-3xl blur-[40px] opacity-15"></div>
+          
+          <div class="glass-panel p-6 space-y-6 relative overflow-hidden border border-white/10 bg-black/40">
+            <div class="flex items-center justify-between border-b border-white/[0.05] pb-4">
+              <div class="flex items-center gap-2">
+                <div class="w-3 h-3 rounded-full bg-red-400"></div>
+                <span class="font-mono text-[10px] text-zinc-400 font-bold uppercase tracking-wider">ACTIVE BLUEPRINT</span>
+              </div>
+              <span class="text-[9px] text-[#FF453A] font-mono uppercase bg-[#FF453A]/15 px-2 py-0.5 rounded border border-[#FF453A]/20">94% EST COMPLETED</span>
+            </div>
+
+            <div class="space-y-4 text-left">
+              <div class="space-y-1">
+                <span class="text-[9px] text-zinc-500 font-mono uppercase">King Abdullah Campus Main Auditorium</span>
+                <h3 class="text-base font-bold text-white font-display">Generative AI Hackfest — UAJK AIS</h3>
+              </div>
+              
+              <div class="space-y-2 pt-2 border-t border-white/[0.03]">
+                <div class="flex items-center justify-between text-[11px]">
+                  <span class="text-[#8E8E93]">Catering Ratios</span>
+                  <span class="font-mono text-white font-bold">120 Warm Samosas & Chai</span>
+                </div>
+                <div class="flex items-center justify-between text-[11px]">
+                  <span class="text-[#8E8E93]">Volunteer Squads</span>
+                  <span class="font-mono text-emerald-400 font-bold">3 Specialized Sub-teams</span>
+                </div>
+                <div class="flex items-center justify-between text-[11px]">
+                  <span class="text-[#8E8E93]">Base PKR Budget</span>
+                  <span class="font-mono text-indigo-400 font-bold">PKR 35,000 Verified</span>
+                </div>
+              </div>
+
+              <!-- Animated progress micro-bar -->
+              <div class="w-full bg-white/[0.05] h-1.5 rounded-full overflow-hidden">
+                <div class="bg-[#FF453A] h-full w-[88%]" style="box-shadow: 0 0 10px rgba(255, 69, 58, 0.4)"></div>
+              </div>
+              
+              <div class="flex gap-2 pt-2">
+                <span class="text-[9px] bg-zinc-800 text-zinc-300 px-2 py-0.5 rounded font-mono">#UAJK</span>
+                <span class="text-[9px] bg-zinc-800 text-zinc-300 px-2 py-0.5 rounded font-mono">#AISociety</span>
+                <span class="text-[9px] bg-zinc-800 text-zinc-300 px-2 py-0.5 rounded font-mono">#EventPilot</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- STATS MATRIX BOARD -->
+      <section class="space-y-6">
+        <div class="text-center space-y-1.5">
+          <span class="text-[9px] text-red-400 font-mono uppercase tracking-[0.15em] font-bold">AIS IMPACT MATRIX</span>
+          <h2 class="text-lg uppercase text-white font-bold tracking-wider font-mono">UAJK Chapter Key Performance Indicators</h2>
+        </div>
+        
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+          <div class="glass-panel p-5 text-center bg-white/[0.01]/80 hover:scale-[1.02] transition-transform">
+            <span class="text-2xl sm:text-3xl font-bold text-white font-display block">2,100+</span>
+            <span class="text-[10px] text-[#6E6E73] font-mono uppercase tracking-wider mt-1 block">Active CS Circle</span>
+          </div>
+          <div class="glass-panel p-5 text-center bg-white/[0.01]/80 hover:scale-[1.02] transition-transform">
+            <span class="text-2xl sm:text-3xl font-bold text-emerald-400 font-display block">92%</span>
+            <span class="text-[10px] text-[#6E6E73] font-mono uppercase tracking-wider mt-1 block">Student Engagement</span>
+          </div>
+          <div class="glass-panel p-5 text-center bg-white/[0.01]/80 hover:scale-[1.02] transition-transform">
+            <span class="text-2xl sm:text-3xl font-bold text-zinc-100 font-display block">PKR 0</span>
+            <span class="text-[10px] text-[#6E6E73] font-mono uppercase tracking-wider mt-1 block">Inclusive Access Cost</span>
+          </div>
+          <div class="glass-panel p-5 text-center bg-white/[0.01]/80 hover:scale-[1.02] transition-transform">
+            <span class="text-2xl sm:text-3xl font-bold text-red-500 font-display block">Muzaffarabad</span>
+            <span class="text-[10px] text-[#6E6E73] font-mono uppercase tracking-wider mt-1 block">Strategic HQ Hub</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- MAIN FEATURE SET BENTO -->
+      <section class="space-y-8">
+        <div class="text-center max-w-xl mx-auto space-y-2">
+          <span class="text-[10px] text-red-400 font-mono uppercase tracking-widest font-bold">ENGINE INGREDIENTS</span>
+          <h2 class="text-xl sm:text-2xl font-bold font-display text-white">Generative Intelligence Architectures</h2>
+          <p class="text-xs text-[#6E6E73]">EventPilot uses automated neural schemas to compose ready-to-deploy operational checklists and PKR budgets.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div class="p-5 bg-white/[0.01] border border-white/[0.04] rounded-2xl hover:border-white/10 transition-all space-y-3">
+            <div class="w-8 h-8 rounded-lg bg-red-500/10 border border-red-500/20 flex items-center justify-center text-red-400 shrink-0">
+              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+            </div>
+            <h3 class="text-xs font-bold text-white uppercase tracking-wider font-mono">Calibrated Budget Sheets</h3>
+            <p class="text-[11px] text-zinc-400 leading-relaxed">
+              Programmatically calibrated PKR spending tiers aligned with local prices of Samosas, tea, certificate laminate materials, and petrol backups.
+            </p>
+          </div>
+
+          <div class="p-5 bg-white/[0.01] border border-white/[0.04] rounded-2xl hover:border-white/10 transition-all space-y-3">
+            <div class="w-8 h-8 rounded-lg bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center text-indigo-400 shrink-0">
+              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+              </svg>
+            </div>
+            <h3 class="text-xs font-bold text-white uppercase tracking-wider font-mono">Campaign Broadcast Kit</h3>
+            <p class="text-[11px] text-zinc-400 leading-relaxed">
+              Generate exquisite copypastas for student group chat broadcasts, highly aesthetic Instagram captions, and executive LinkedIn requests.
+            </p>
+          </div>
+
+          <div class="p-5 bg-white/[0.01] border border-white/[0.04] rounded-2xl hover:border-white/10 transition-all space-y-3">
+            <div class="w-8 h-8 rounded-lg bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400 shrink-0">
+              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+              </svg>
+            </div>
+            <h3 class="text-xs font-bold text-white uppercase tracking-wider font-mono">Squad Delegation Board</h3>
+            <p class="text-[11px] text-zinc-400 leading-relaxed">
+              Auto-generate operational duties split into specialized taskforces: Tech support tables, guest liaisons, and photo/video controllers.
+            </p>
+          </div>
+
+          <div class="p-5 bg-white/[0.01] border border-white/[0.04] rounded-2xl hover:border-white/10 transition-all space-y-3">
+            <div class="w-8 h-8 rounded-lg bg-[#FF453A]/10 border border-[#FF453A]/20 flex items-center justify-center text-[#FF453A] shrink-0">
+              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
+              </svg>
+            </div>
+            <h3 class="text-xs font-bold text-white uppercase tracking-wider font-mono">Printable KPI Survey</h3>
+            <p class="text-[11px] text-zinc-400 leading-relaxed">
+              Get elegant markdown-formatted student feedback surveys to measure Speaker reviews, catering ratios, and key administrative insights.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- FEATURED CORE EVENTS BLUEPRINTS SECTION -->
+      <section id="featured-events" class="space-y-8 scroll-mt-6">
+        <div class="text-center max-w-xl mx-auto space-y-2">
+          <span class="text-[10px] text-indigo-400 font-mono uppercase tracking-widest font-bold">PRE-LOADED SPECIFICATIONS</span>
+          <h2 class="text-xl sm:text-2xl font-bold font-display text-white">Upcoming Campus Events 2026</h2>
+          <p class="text-xs text-[#6E6E73]">Quickly trigger an interactive AIS EventPilot campaign blueprint from our live society schedule database below.</p>
+        </div>
+
+        <div id="blueprints-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- Dynamically constructed using PRESETS by JS -->
+        </div>
+      </section>
+
+      <!-- FOOTER -->
+      <footer class="border-t border-white/[0.04] pt-8 pb-4 text-center space-y-2">
+        <p class="text-[11px] text-zinc-500 font-mono">
+          UAJK Artificial Intelligence Society (AIS) • Muzaffarabad Allied Campus Suite
+        </p>
+        <p class="text-[10px] text-zinc-700">
+          Curated by Chapter Coordinators under standard Generative Models & Sandbox Ingress Rules.
+        </p>
+      </footer>
+
+    </div>
+
+    <!-- MAIN PLANNING VIEW PANEL -->
+    <div id="planner-view" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 relative hidden animate-fade-in">
       
       <!-- HEADER ZONE -->
       <header class="flex flex-col md:flex-row items-start md:items-center justify-between mb-12 pb-6 border-b border-white/[0.05] gap-4">
         <div class="space-y-1">
-          <div class="flex items-center gap-2">
-            <span class="w-2.5 h-2.5 rounded-full bg-[#FF453A] animate-pulse"></span>
+          <div class="flex items-center gap-3 mb-2">
+            <button onclick="showLandingPage()" class="px-3 py-1.5 bg-white/[0.03] border border-white/5 hover:bg-white/[0.08] hover:border-white/12 text-[10px] text-zinc-400 hover:text-white rounded-lg font-mono font-bold transition-all flex items-center gap-1.5 cursor-pointer">
+              <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+              </svg>
+              <span>PORTAL HUB</span>
+            </button>
+            <span class="text-zinc-700 font-mono text-[9px]">•</span>
+            <span class="w-2 h-2 rounded-full bg-[#FF453A] animate-pulse"></span>
             <span class="font-mono text-[10px] text-[#6E6E73] uppercase tracking-widest font-bold">UAJK AIS CHAPTER COORDINATOR</span>
           </div>
           <h1 class="text-2xl md:text-3xl font-bold tracking-tight font-display text-white flex items-center gap-3">

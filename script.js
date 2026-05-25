@@ -29,6 +29,14 @@ const PRESETS = [
     audience: "All Undergraduate Freshmen & New Society Enrolees",
     theme: "Welcoming 2026 batch, hands on AI demo setups, and society roadmaps",
     daysAhead: 5
+  },
+  {
+    name: "Data & Neural Vector Bootcamp",
+    eventName: "Hands-on Data Pipelines & Vector Databases Bootcamp",
+    venue: "Software Engineering Lab, King Abdullah Campus, UAJK",
+    audience: "Undergraduate Computer Science & Data Enthusiasts",
+    theme: "Deep diving into building vector databases, similarity metrics, indexing patterns, and semantic search projects on campus",
+    daysAhead: 21
   }
 ];
 
@@ -190,6 +198,9 @@ const LOADING_STEPS = [
 document.addEventListener("DOMContentLoaded", () => {
   // Initialize preset buttons
   renderPresets();
+  
+  // Render landing blueprints grid
+  drawLandingBlueprints();
   
   // Set default values for input fields on load
   document.getElementById("input-eventName").value = PRESETS[0].eventName;
@@ -735,4 +746,87 @@ async function copySocialText(elementId, btnId) {
     console.error("Could not activate clipboard access:", e);
     alert("Clipboard access blocked. Please highlight raw text to copy manually!");
   }
+}
+
+// Toggle between Landing View Portal and Interactive Planner View
+function showLandingPage() {
+  document.getElementById("landing-view").classList.remove("hidden");
+  document.getElementById("planner-view").classList.add("hidden");
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+function showPlannerPage() {
+  document.getElementById("landing-view").classList.add("hidden");
+  document.getElementById("planner-view").classList.remove("hidden");
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+function enterPlanningEngineWithPreset(presetIdx) {
+  if (presetIdx >= 0 && presetIdx < PRESETS.length) {
+    selectPreset(presetIdx);
+    
+    // Auto populate the active workspace model
+    const p = PRESETS[presetIdx];
+    currentPlan.eventName = p.eventName;
+    currentPlan.venue = p.venue;
+    currentPlan.audience = p.audience;
+    currentPlan.theme = p.theme;
+    currentPlan.eventDate = getDefaultDate(p.daysAhead);
+    
+    // Refresh workspace to reflect loaded preset details immediately
+    drawWorkspace();
+  }
+  showPlannerPage();
+}
+
+// Dynamically generate featured custom campus blueprints list for direct engagement
+function drawLandingBlueprints() {
+  const container = document.getElementById("blueprints-grid");
+  if (!container) return;
+  container.innerHTML = "";
+
+  PRESETS.forEach((p, idx) => {
+    const card = document.createElement("div");
+    card.className = "glass-panel p-6 text-left relative overflow-hidden bg-black/40 border border-white/[0.04] hover:border-white/12 transition-all flex flex-col justify-between group h-full";
+    
+    card.innerHTML = `
+      <div class="space-y-4">
+        <div class="flex items-center justify-between gap-2">
+          <span class="text-[9px] uppercase font-mono font-bold bg-[#FF453A]/10 text-[#FF453A] border border-[#FF453A]/15 px-2 py-0.5 rounded">
+            CAMPUS SPECS
+          </span>
+          <span class="text-[9px] text-[#6E6E73] font-mono">T-${p.daysAhead} Days</span>
+        </div>
+        
+        <div class="space-y-1">
+          <h3 class="text-base font-bold text-white font-display group-hover:text-[#FF453A] transition-colors line-clamp-1">
+            ${p.name}
+          </h3>
+          <p class="text-[10px] text-[#6E6E73] font-mono flex items-center gap-1">
+            <svg class="w-3 h-3 text-[#FF453A]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+            </svg>
+            <span class="truncate">${p.venue.split(",")[0]}</span>
+          </p>
+        </div>
+
+        <p class="text-xs text-[#8E8E93] leading-relaxed line-clamp-2">
+          ${p.theme}
+        </p>
+
+        <div class="space-y-1 pt-2 border-t border-white/[0.03]">
+          <span class="text-[8px] uppercase font-mono text-zinc-500 block">Audience Focus</span>
+          <p class="text-[11px] text-zinc-300 truncate">${p.audience}</p>
+        </div>
+      </div>
+
+      <button onclick="enterPlanningEngineWithPreset(${idx})" class="w-full mt-6 py-2.5 px-4 bg-white/[0.02] border border-white/5 hover:bg-[#FF453A] hover:border-[#FF453A]/30 text-white font-mono text-[10px] font-bold tracking-wider rounded-xl transition-all flex items-center justify-center gap-2 cursor-pointer">
+        <span>RECRUIT PLANNER NOW</span>
+        <svg class="w-3 h-3 text-white transition-transform group-hover:translate-x-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+        </svg>
+      </button>
+    `;
+    container.appendChild(card);
+  });
 }
